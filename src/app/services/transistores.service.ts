@@ -54,7 +54,7 @@ export class TransistoresService {
     nombre:"BC547",
     beta:130,
     IcMax:0.1,
-    PMax: 1.5,
+    PMax: 0.5,
     VceMax: 45
   }
 }
