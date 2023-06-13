@@ -98,7 +98,6 @@ export class AppComponent implements OnInit{
     this.calcular=<HTMLButtonElement> document.getElementById("btnCalc");
     this.copiar=<HTMLButtonElement> document.getElementById("btnCop");
     this.pegar=<HTMLButtonElement> document.getElementById("btnPeg");
-    //this.ValidarNumeros();
   }
 
   /// Función principal del programa
@@ -430,10 +429,10 @@ export class AppComponent implements OnInit{
     data.Vce = Vcc-data.Vre-data.Vrc;
     data.Vc = Vcc-data.Vrc;
 
-    if(data.Ic > tran.IcMax || data.Vce < 0){
+    if(data.Ic > tran.IcMax || data.Vce < 0 || data.Vce > tran.VceMax || tran.PMax < data.Vce*data.Ic){
       let formatError = 
      `<div class="alert alert-danger" role="alert">
-        Los valores resultan en un circuito con errores
+        Los valores resultan en un circuito con errores, revise los valores.
       </div>`;
       this.error.innerHTML = formatError;
     }else{
@@ -472,10 +471,11 @@ export class AppComponent implements OnInit{
     let IR1 = IR2+CyV.Ib;
     let VR1 = Vcc-VR2;
     data.R1 = VR1/IR1;
-    if(CyV.Ib*tran.beta > tran.IcMax || CyV.Vce < 0){
+    CyV.Vce = (CyV.Vc-CyV.Ve);
+    if(CyV.Ib*tran.beta > tran.IcMax || CyV.Vce < 0 || CyV.Vce > tran.VceMax || tran.PMax < CyV.Vce*CyV.Ic){
       let formatError = 
      `<div class="alert alert-danger" role="alert">
-        Los valores resultan en un circuito con errores
+        Los valores resultan en un circuito con errores, revise los valores.
       </div>`;
       this.error.innerHTML = formatError;
     }else if(tran.beta*data.Re < 10*data.R2){
@@ -524,10 +524,10 @@ export class AppComponent implements OnInit{
     data.Vce = Vcc-data.Vrc-data.Vre;
     data.Vc = data.Vce+data.Vre;
     data.Ve = data.Vre;
-    if(data.Ic > tran.IcMax || data.Vce < 0){
+    if(data.Ic > tran.IcMax || data.Vce < 0 || data.Vce > tran.VceMax || tran.PMax < data.Vce*data.Ic){
       let formatError = 
      `<div class="alert alert-danger" role="alert">
-        Los valores resultan en un circuito con errores
+        Los valores resultan en un circuito con errores, revise los valores.
       </div>`;
       this.error.innerHTML = formatError;
     }else{
@@ -560,10 +560,11 @@ export class AppComponent implements OnInit{
     data.Rb = (Vcc-0.7-CyV.Ve)/CyV.Ib;
     data.Rc = (Vcc-CyV.Vc)/CyV.Ic;
     data.Re = (CyV.Ve)/CyV.Ie;
-    if(CyV.Ib*tran.beta > tran.IcMax || CyV.Vce < 0){
+    CyV.Vce = (CyV.Vc-CyV.Ve);
+    if(CyV.Ib*tran.beta > tran.IcMax || CyV.Vce < 0 || CyV.Vce > tran.VceMax || tran.PMax < CyV.Vce*CyV.Ic){
       let formatError = 
      `<div class="alert alert-danger" role="alert">
-        Los valores resultan en un circuito con errores
+        Los valores resultan en un circuito con errores, revise los valores.
       </div>`;
       this.error.innerHTML = formatError;
     }else{
@@ -591,10 +592,11 @@ export class AppComponent implements OnInit{
     data.Rb = (CyV.Vc-0.7-CyV.Ve)/CyV.Ib;
     data.Rc = (Vcc-CyV.Vc)/CyV.Ie;
     data.Re = (CyV.Ve)/CyV.Ie;
-    if(CyV.Ib*tran.beta > tran.IcMax || CyV.Vce < 0){
+    CyV.Vce = (CyV.Vc-CyV.Ve);
+    if(CyV.Ib*tran.beta > tran.IcMax || CyV.Vce < 0 || CyV.Vce > tran.VceMax || tran.PMax < CyV.Vce*CyV.Ic){
       let formatError = 
      `<div class="alert alert-danger" role="alert">
-        Los valores resultan en un circuito con errores
+        Los valores resultan en un circuito con errores, revise los valores.
       </div>`;
       this.error.innerHTML = formatError;
     }else{
@@ -636,10 +638,10 @@ export class AppComponent implements OnInit{
     data.Vce = Vcc-data.Vrc-data.Vre;
     data.Vc = data.Vce+data.Vre;
     data.Ve = data.Vre;
-    if(data.Ic > tran.IcMax || data.Vce < 0){
+    if(data.Ic > tran.IcMax || data.Vce < 0 || data.Vce > tran.VceMax || tran.PMax < data.Vce*data.Ic){
       let formatError = 
      `<div class="alert alert-danger" role="alert">
-        Los valores resultan en un circuito con errores
+        Los valores resultan en un circuito con errores, revise los valores.
       </div>`;
       this.error.innerHTML = formatError;
     }else{
@@ -685,10 +687,10 @@ export class AppComponent implements OnInit{
     data.Vb = Vcc - data.Vrb;
     data.Ve = data.Vb - 0.7;
     data.Vc = Vcc - data.Vrc;
-    if(data.Ic > tran.IcMax || data.Vce < 0){
+    if(data.Ic > tran.IcMax || data.Vce < 0 || data.Vce > tran.VceMax || tran.PMax < data.Vce*data.Ic){
       let formatError = 
      `<div class="alert alert-danger" role="alert">
-        Los valores resultan en un circuito con errores
+        Los valores resultan en un circuito con errores, revise los valores.
       </div>`;
       this.error.innerHTML = formatError;
     }else{
@@ -719,10 +721,11 @@ export class AppComponent implements OnInit{
     };
     data.Rb = (Vcc-0.7)/CyV.Ib;
     data.Rc = (Vcc-CyV.Vc)/(CyV.Ib*tran.beta);
-    if(CyV.Ib*tran.beta > tran.IcMax || CyV.Vce < 0){
+    CyV.Vce = (CyV.Vc-CyV.Ve);
+    if(CyV.Ib*tran.beta > tran.IcMax || CyV.Vce < 0 || CyV.Vce > tran.VceMax || tran.PMax < CyV.Vce*CyV.Ic){
       let formatError = 
      `<div class="alert alert-danger" role="alert">
-        Los valores resultan en un circuito con errores
+        Los valores resultan en un circuito con errores, revise los valores.
       </div>`;
       this.error.innerHTML = formatError;
     }else{

@@ -29,29 +29,39 @@ export class TransistoresService {
   vacio:transistor = {
     nombre:"",
     beta:0,
-    IcMax:0
+    IcMax:0,
+    PMax:0,
+    VceMax:0
   }
   
   MPS2222:transistor ={
     nombre:"MPS2222",
-    beta:290, //290
-    IcMax:0.6
+    beta:100, //290
+    IcMax:0.6,
+    PMax: 1.5,
+    VceMax: 30
   }
 
   TIP41:transistor ={
     nombre:"TIP41",
-    beta:80, //80
-    IcMax:0.7
+    beta:75,
+    IcMax:6,
+    PMax:2,
+    VceMax:40
   }
   
   BC547:transistor ={
     nombre:"BC547",
-    beta:450,
-    IcMax:0.2
+    beta:130,
+    IcMax:0.1,
+    PMax: 1.5,
+    VceMax: 45
   }
 }
 export interface transistor{
   nombre:string,
   beta:number,
-  IcMax:number
+  IcMax:number,
+  VceMax:number,
+  PMax:number
 }
