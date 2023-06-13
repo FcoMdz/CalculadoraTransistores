@@ -157,7 +157,7 @@ export class AppComponent implements OnInit{
   
   generarFija():void{
     this.quitar();
-    this.imgCircuito.src="../assets/imgs/Polarización fija.png";
+    this.imgCircuito.src="./assets/imgs/Polarización fija.png";
     this.divVc.removeAttribute("hidden");
     this.divVb.removeAttribute("hidden");
     this.divVe.removeAttribute("hidden");
@@ -174,7 +174,7 @@ export class AppComponent implements OnInit{
 
   generarEmisor():void{
     this.quitar();
-    this.imgCircuito.src="../assets/imgs/Polarización por emisor.png";
+    this.imgCircuito.src="./assets/imgs/Polarización por emisor.png";
     this.divVc.removeAttribute("hidden");
     this.divVb.removeAttribute("hidden");
     this.divVe.removeAttribute("hidden");
@@ -191,7 +191,7 @@ export class AppComponent implements OnInit{
   }
   generarDivisor():void{
     this.quitar();
-    this.imgCircuito.src="../assets/imgs/Polarización por divisor de voltaje.png";
+    this.imgCircuito.src="./assets/imgs/Polarización por divisor de voltaje.png";
     this.divVc.removeAttribute("hidden");
     this.divVb.removeAttribute("hidden");
     this.divVe.removeAttribute("hidden");
@@ -209,7 +209,7 @@ export class AppComponent implements OnInit{
   }
   generarRetroalimentacion():void{
     this.quitar();
-    this.imgCircuito.src="../assets/imgs/Polarización por retroalimentación.png";
+    this.imgCircuito.src="./assets/imgs/Polarización por retroalimentación.png";
     this.divVc.removeAttribute("hidden");
     this.divVb.removeAttribute("hidden");
     this.divVe.removeAttribute("hidden");
